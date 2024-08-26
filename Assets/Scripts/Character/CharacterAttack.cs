@@ -40,7 +40,6 @@ public class CharacterAttack : CharacterBase
             Vector3 rayDirection = rotation * direction;
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, attackRange, layerMaskToIgnore);
-            Debug.DrawRay(transform.position, rayDirection * attackRange, Color.red, 10f);
             if (hit.collider != null && !hitObjects.Contains(hit.collider.gameObject))
             {
                 hitObjects.Add(hit.collider.gameObject);
@@ -54,6 +53,5 @@ public class CharacterAttack : CharacterBase
     {
         GameObject projectileInstance = Instantiate(projectilePrefab, transform.position, transform.rotation);
         projectileInstance.transform.localScale = transform.localScale;
-        //Projectile projectile = projectileInstance.GetComponent<Projectile>();
     }
 }

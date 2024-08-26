@@ -78,7 +78,7 @@ public class CharacterHealth : CharacterBase
         this.enabled = false;
     }
 
-    private IEnumerator FlashSpriteRed()
+    IEnumerator FlashSpriteRed()
     {
         Color flashColor = Color.red;
         float elapsedTime = 0f;
@@ -87,18 +87,16 @@ public class CharacterHealth : CharacterBase
         {
             // Toggle between original color and flash color
             spriteRenderer.color = (spriteRenderer.color == originalColor) ? flashColor : originalColor;
-
-            // Wait for a short duration
             yield return new WaitForSeconds(0.1f);
-
             elapsedTime += 0.1f;
         }
 
         // Ensure the sprite's color is back to its original color
+        // This can happen if the coroutine is stopped early from other scripts, etc.
         spriteRenderer.color = originalColor;
     }
 
-    private IEnumerator DimLight()
+    IEnumerator DimLight()
     {
         if (characterLight)
         {
@@ -113,6 +111,7 @@ public class CharacterHealth : CharacterBase
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
+
             // Ensure the light is fully dimmed
             characterLight.intensity = dimIntensity;
         }

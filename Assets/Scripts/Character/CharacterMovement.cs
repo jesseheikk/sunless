@@ -29,14 +29,9 @@ public class CharacterMovement : CharacterBase
 
     protected void Move(float direction)
     {
-        // Apply horizontal movement
         rb.velocity = new Vector2(direction * movementSpeed, rb.velocity.y);
-
-        // Determine if the character is running based on a threshold
         bool isRunning = Mathf.Abs(direction) > 0.01f;
         animator.SetBool("Running", isRunning);
-
-        // Make sure the sprite is facing the latest moving direction
         FaceMovingDirection(direction);
     }
 
@@ -57,14 +52,10 @@ public class CharacterMovement : CharacterBase
 
     protected bool IsWallAhead(Vector2 direction)
     {
-        // Adjust the ray start position based on the direction and character's scale
         float rayStartOffset = 0.1f * Mathf.Max(transform.localScale.x, transform.localScale.y);
         Vector2 rayStart = (Vector2)transform.position + direction * rayStartOffset;
-
-        // Cast the ray in the specified direction
         RaycastHit2D hit = Physics2D.Raycast(rayStart, direction, wallCheckDistance, groundLayer);
 
-        // Return true if a collider is hit, false otherwise
         return hit.collider != null;
     }
 }

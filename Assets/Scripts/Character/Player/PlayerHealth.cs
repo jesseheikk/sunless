@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : CharacterHealth
 {
+    [SerializeField] Text deathText;
+
     CameraShake cameraShake;
     ParticleSystem damageParticles;
-    [SerializeField] Text deathText;
 
     protected override void Start()
     {
@@ -79,7 +80,7 @@ public class PlayerHealth : CharacterHealth
         StartCoroutine(ReloadSceneAfterDelay(5f));
     }
 
-    private IEnumerator ReloadSceneAfterDelay(float delay)
+    IEnumerator ReloadSceneAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
 

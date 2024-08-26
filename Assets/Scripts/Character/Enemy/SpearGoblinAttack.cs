@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpearGoblinAttack : EnemyAttack
 {
-    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] GameObject projectilePrefab;
 
     float attackTimer = 0f;
     float attackCooldown = 3f;

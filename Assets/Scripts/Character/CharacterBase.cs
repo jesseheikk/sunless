@@ -28,8 +28,6 @@ public class CharacterBase : MonoBehaviour
         }
     }
 
-    // Pushes the object to the opposite direction of the given object
-    // TODO: PREVENT PLAYER MOVEMENT FROM OVERRIDING THIS
     protected void PushAwayFromObject(Transform interactedObject, float pushForce)
     {
         if (rb == null) return;

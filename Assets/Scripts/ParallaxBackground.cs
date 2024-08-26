@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class ParallaxBackground : MonoBehaviour
 {
-    public float parallaxSpeedX = 1.0f;  
-    public float parallaxSpeedY = 1.0f;
+    [SerializeField] float parallaxSpeedX = 1.0f;  
+    [SerializeField] float parallaxSpeedY = 1.0f;
 
-    private Transform cameraTransform;
-    private Vector3 previousCameraPosition;
-    private float textureUnitSizeX;
+    Transform cameraTransform;
+    Vector3 previousCameraPosition;
+    float textureUnitSizeX;
 
-    private void Start()
+    void Start()
     {
         cameraTransform = Camera.main.transform;
         previousCameraPosition = cameraTransform.position;
@@ -19,7 +19,7 @@ public class ParallaxBackground : MonoBehaviour
         textureUnitSizeX = (texture.width / sprite.pixelsPerUnit) * scaleFactor;
     }
 
-    private void LateUpdate()
+    void LateUpdate()
     {
         Vector3 cameraDelta = cameraTransform.position - previousCameraPosition;
         transform.position += new Vector3(cameraDelta.x * parallaxSpeedX, cameraDelta.y * parallaxSpeedY);

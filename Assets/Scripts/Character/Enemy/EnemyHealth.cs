@@ -31,13 +31,8 @@ public class EnemyHealth : CharacterHealth
     {
         for (int i = 0; i < numberOfDrops; i++)
         {
-            // Instantiate the dropPrefab at the enemy's position and rotation
             GameObject drop = Instantiate(dropPrefab, transform.position, Quaternion.identity);
-
-            // Get the Rigidbody2D component for applying force
             Rigidbody2D rb = drop.GetComponent<Rigidbody2D>();
-
-            // Calculate a random angle between 30 and 80 degrees
             float angle = Random.Range(30f, 300f);
 
             // Convert the angle to radians for trigonometric calculations
@@ -45,9 +40,7 @@ public class EnemyHealth : CharacterHealth
 
             // Calculate the force vector based on the angle
             Vector2 force = new Vector2(Mathf.Cos(angleInRadians), Mathf.Sin(angleInRadians));
-
-            // Apply the force to the Rigidbody2D to make the dropPrefab fly
-            rb.AddForce(force * 10f, ForceMode2D.Impulse); // Adjust the multiplier to control the force strength
+            rb.AddForce(force * 10f, ForceMode2D.Impulse);
         }
     }
 }

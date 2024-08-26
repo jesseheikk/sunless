@@ -31,7 +31,9 @@ public class EnemyAttack : CharacterAttack
         EnemyMovement enemyMovement = GetComponent<EnemyMovement>();
         enemyMovement.DisableMovement();
         animator.SetTrigger("ThrowAttack");
+
         yield return new WaitForSeconds(1f);
+
         SpawnProjectile(projectilePrefab);
         enemyMovement.EnableMovement();
     }
@@ -40,11 +42,11 @@ public class EnemyAttack : CharacterAttack
     {
         EnemyMovement enemyMovement = GetComponent<EnemyMovement>();
         enemyMovement.DisableMovement();
-
         animator.SetTrigger("SwingAttack");
+
+        // Wait a moment to give the player time to react before applying vfx and damage
         yield return new WaitForSeconds(1f);
         swingAttackVFX?.Play();
-        //baseAttackSound?.Play();
 
         List<GameObject> hitObjects = GetHitObjectsInSector();
         foreach (GameObject hitObject in hitObjects)

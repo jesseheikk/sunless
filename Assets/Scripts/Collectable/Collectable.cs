@@ -48,10 +48,9 @@ public class Collectable : MonoBehaviour
 
     void Start()
     {
-        // Check if the item has already been collected (only for persistent collectables)
         if (isPersistent && PlayerInfo.HasCollectedItem(collectableID))
         {
-            gameObject.SetActive(false); // Disable the collectable
+            gameObject.SetActive(false);
         }
         else
         {
@@ -62,7 +61,6 @@ public class Collectable : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        // Prevent from falling through ground
         if (collider.CompareTag("Ground"))
         {
             if (rb != null)
@@ -111,9 +109,7 @@ public class Collectable : MonoBehaviour
     {
         while (true)
         {
-            // Scale up
             yield return StartCoroutine(ScaleTo(originalScale * pulseScaleFactor, pulseDuration / 2));
-            // Scale down
             yield return StartCoroutine(ScaleTo(originalScale, pulseDuration / 2));
         }
     }

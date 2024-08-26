@@ -65,14 +65,10 @@ public class Projectile : MonoBehaviour
 
     protected bool IsWallAhead(Vector2 direction)
     {
-        // Adjust the ray start position based on the direction
         float rayStartOffset = 0.1f;
         Vector2 rayStart = (Vector2)transform.position + direction * rayStartOffset;
-
-        // Cast the ray in the specified direction
         RaycastHit2D hit = Physics2D.Raycast(rayStart, direction, wallCheckDistance, groundLayer);
 
-        // Return true if a collider is hit, false otherwise
         return hit.collider != null;
     }
 

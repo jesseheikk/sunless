@@ -8,7 +8,7 @@ public class NpcDialog : Interactable
 
     void Start()
     {
-        // Assign a unique ID to this NPC
+        // Assign a unique ID to this NPC to keep track if player already talked to it, etc.
         npcId = gameObject.name;
 
         // Check if the dialog state for this NPC exists in PlayerInfo

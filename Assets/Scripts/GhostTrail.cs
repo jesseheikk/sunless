@@ -24,7 +24,6 @@ public class GhostTrail : MonoBehaviour
     void SpawnGhost()
     {
         GameObject ghost = Instantiate(ghostPrefab, transform.position, transform.rotation);
-        // Optionally, match the scale and other properties of the original object
         ghost.transform.localScale = transform.localScale;
     }
 

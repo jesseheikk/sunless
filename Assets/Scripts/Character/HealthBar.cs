@@ -14,13 +14,10 @@ public class HealthBar : MonoBehaviour
         slider = GetComponent<Slider>();
         rectTransform = GetComponent<RectTransform>();
 
-        // Store the initial anchored position
+        // Set the position with min and max values to keep the left starting point
+        // static when the healthbar grows in size
         initialPosition = rectTransform.anchoredPosition;
-
-        // Set pivot to the left center
         rectTransform.pivot = new Vector2(0, 0.5f);
-
-        // Set the anchor to the left so the position remains fixed when resizing
         rectTransform.anchorMin = new Vector2(0, 0.5f);
         rectTransform.anchorMax = new Vector2(0, 0.5f);
     }
@@ -38,11 +35,8 @@ public class HealthBar : MonoBehaviour
 
     private void AdjustWidth(float maxHealth)
     {
-        //float newWidth = baseWidth + (maxHealth * widthPerHealthUnit);
         float newWidth = maxHealth * widthPerHealthUnit;
         rectTransform.sizeDelta = new Vector2(newWidth, rectTransform.sizeDelta.y);
-
-        // Reset the anchored position to the initial value to prevent shifting
         rectTransform.anchoredPosition = initialPosition;
     }
 }

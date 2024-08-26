@@ -40,7 +40,7 @@ public class PlayerMovement : CharacterMovement
         leftRayOriginOffset = new Vector2(-0.5f, 0f);
     }
 
-    private void Update()
+    void Update()
     {
         if (!canMove)
         {
@@ -51,7 +51,7 @@ public class PlayerMovement : CharacterMovement
         CheckJump();
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         if (isDashing || !canMove)
         {
@@ -84,25 +84,25 @@ public class PlayerMovement : CharacterMovement
         Move(moveInput);
     }
 
-    private void CheckJump()
+    void CheckJump()
     {
         // Only allow jump if player's feet are touching the ground
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
         if (Input.GetButtonDown("Jump"))
         {
-            // Start the jump immediately when the jump button is pressed
             if (isGrounded)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 isJumping = true;
-                jumpTime = 0f; // Reset jump time when jumping
+                jumpTime = 0f;
             }
         }
 
         if (isJumping && Input.GetButton("Jump"))
         {
             // Continue applying upward force while the jump button is held
+            // to give player more control of the jump
             rb.AddForce(Vector2.up * jumpHoldForce * Time.deltaTime, ForceMode2D.Impulse);
 
             // Limit the total jump time
@@ -112,7 +112,7 @@ public class PlayerMovement : CharacterMovement
             }
             else
             {
-                isJumping = false; // Stop jumping when the max time is reached
+                isJumping = false;
             }
         }
         else
@@ -121,7 +121,7 @@ public class PlayerMovement : CharacterMovement
         }
     }
 
-    private void CheckDash()
+    void CheckDash()
     {
         if (Input.GetButtonDown("Dash") && canDash)
         {
@@ -129,9 +129,8 @@ public class PlayerMovement : CharacterMovement
         }
     }
 
-    private IEnumerator Dash()
+    IEnumerator Dash()
     {
-        // Play dash sound if found
         if (dashSound)
         {
             dashSound.time = 0.2f;
@@ -140,14 +139,11 @@ public class PlayerMovement : CharacterMovement
 
         GhostTrail trail = GetComponent<GhostTrail>();
         trail?.StartEmit();
-
-        // Prevent dashing again until the cooldown has finished
         canDash = false;
-
-        // Prevent other movement during the dash
         isDashing = true;
 
-        // Save previous gravity and set it to 0 for the time of the dash
+        // Save previous gravity and set it to 0
+        // to prevent player from falling during the dash
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
 
@@ -155,13 +151,10 @@ public class PlayerMovement : CharacterMovement
         rb.velocity = new Vector2(transform.localScale.x * dashSpeedHorizontal, 0f);
         yield return new WaitForSeconds(dashDuration);
 
-        // Set values back to normal
         rb.gravityScale = originalGravity;
         isDashing = false;
-
         trail?.StopEmit();
 
-        // Allow dashing again after cooldown
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
     }

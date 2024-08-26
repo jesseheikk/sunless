@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class PlayerAttack : CharacterAttack
 {
+    [SerializeField] float attackRecoilForce = 50.0f;
+    [SerializeField] AudioSource wallHitSound;
+    [SerializeField] AudioSource enemyHitSound;
+
     float attackCooldown = 0.5f;
     float lastAttackTime;
     bool attackInputReceived = false;
     Text attackText;
-
-    [SerializeField] float attackRecoilForce = 50.0f;
-    [SerializeField] AudioSource wallHitSound;
-    [SerializeField] AudioSource enemyHitSound;
 
     protected override void Start()
     {
@@ -63,7 +63,6 @@ public class PlayerAttack : CharacterAttack
         swingAttackVFX?.Play();
 
         List<GameObject> hitObjects = GetHitObjectsInSector(20f);
-
         foreach (GameObject hitObject in hitObjects)
         {
             HandleHit(hitObject);

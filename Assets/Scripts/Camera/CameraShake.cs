@@ -3,23 +3,17 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
-    private Transform originalTransform;
-    private float shakeDuration = 0f;
-    private float shakeMagnitude = 0.1f;
-    private float dampingSpeed = 1.0f;
+    Transform originalTransform;
+    float shakeDuration = 0f;
+    float shakeMagnitude = 0.1f;
+    float dampingSpeed = 1.0f;
 
-    private void Awake()
+    void Awake()
     {
         originalTransform = transform;
     }
 
-    public void Shake(float duration, float magnitude)
-    {
-        shakeDuration = duration;
-        shakeMagnitude = magnitude;
-    }
-
-    private void Update()
+    void Update()
     {
         if (shakeDuration > 0)
         {
@@ -32,5 +26,11 @@ public class CameraShake : MonoBehaviour
             shakeDuration = 0f;
             transform.localPosition = originalTransform.localPosition;
         }
+    }
+
+    public void Shake(float duration, float magnitude)
+    {
+        shakeDuration = duration;
+        shakeMagnitude = magnitude;
     }
 }

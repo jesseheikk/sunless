@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class GhostFade : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
-    public float fadeDuration = 1f; // Duration over which the ghost fades out
+    [SerializeField] float fadeDuration = 1f;
 
-    private float fadeTimer = 0f;
+    SpriteRenderer spriteRenderer;
+    float fadeTimer = 0f;
 
     void Start()
     {
