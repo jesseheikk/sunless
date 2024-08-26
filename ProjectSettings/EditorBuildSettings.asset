@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Forest_1.unity
+    guid: 60197e6e32d58acbd9e52464a8ddde9c
+  - enabled: 1
+    path: Assets/Scenes/Forest_3.unity
+    guid: 7ba5b78302a24c0cda7278eecd8d9b18
+  - enabled: 0
+    path: Assets/Scenes/Forest_2_old.unity
+    guid: c5fe73fc2e39d294e81866eadb36fc25
+  - enabled: 0
+    path: Assets/Scenes/Forest_Town_Old.unity
+    guid: 0ea721c9b877fd831b114a144127d6a0
+  - enabled: 1
+    path: Assets/Scenes/Forest_Town.unity
+    guid: 019d298fac4c6e1d59db96d2a73eaa65
+  - enabled: 1
+    path: Assets/Scenes/Town_House_1.unity
+    guid: c494f512617fe950abada108eaf4efe4
+  - enabled: 1
+    path: Assets/Scenes/Town_House_2.unity
+    guid: d6ea612880fe95de4a6930fb2f0cbedb
+  - enabled: 1
+    path: Assets/Scenes/Town_House_3.unity
+    guid: 1f2f4f3c4a0832d07849814681b02439
+  - enabled: 1
+    path: Assets/Scenes/Forest_2.unity
+    guid: 3baacd50e002b0764b139e30d6893343
+  m_configObjects: {}
