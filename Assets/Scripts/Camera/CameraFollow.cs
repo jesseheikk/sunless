@@ -5,7 +5,6 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] Transform playerTransform;
     [SerializeField] Transform groundLevel;
     [SerializeField] float smoothSpeed = 0.125f;
-    [SerializeField] float yOffset = 10f;
 
     bool isGrounded;
 
