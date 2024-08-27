@@ -740,9 +740,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 712026117848434964}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 830c66e98f1d8ff2897f4469861ca1e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 464ba87f1a4c4700aad083d381677a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeDuration: 1
+  blackout: {fileID: 0}
 --- !u!114 &-2824284441932609921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -769,7 +771,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a96671b2cb2ce9beacc1169b1829a20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinsText: {fileID: 0}
 --- !u!1 &1563068368902348173
 GameObject:
   m_ObjectHideFlags: 0
